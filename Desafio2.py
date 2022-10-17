@@ -19,14 +19,11 @@ while menu !=4:
     if menu == 1:
         numerocontenedora = int(input("ingrese el numero del contenedor para ubicarlo: "))     
         nombreempresa = input("ingrese el nombre de la empresa:")
-        ubicacion=puerto[i][j]
-        print("se encuentra en la posicion",ubicacion)
-
-        consulta = input("¿desea continuar?:")
-        while consulta == "si":
+        seguir = input("¿desea continuar?:")
+        while seguir== "si":
             numero = int(input("ingrese el numero del contenedor: "))
             nombreempresa = input("ingrese el nombre de la empresa propietaria: ")
-            consulta = input("¿desea continuar?:")
+            seguir = input("¿desea continuar?:")
            
         menu = int(input("1 para ubicar un contenedor \n2 para ingresar un contenedor \n3 para retirar un contenedor  \n4 para terminar la jornada \neleccion:"))
 
@@ -59,7 +56,7 @@ while menu !=4:
                 for j in range (m):
                     print("|",puerto[i][j],"|",end=" ")
                 print()
-            consulta = input("¿desea continuar?:")
+            seguir = input("¿desea continuar?:")
 
         menu = int(input("1 para ubicar un contenedor \n2 para ingresar un contenedor \n3 para retirar un contenedor  \n4 para terminar la jornada laboral \nIngrese opción:"))
 
