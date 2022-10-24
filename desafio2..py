@@ -1,11 +1,12 @@
-n=int(input("ingrese filas:"))
-m=int(input("ingrese columnas:"))
+import random
+n=int(input("ingrese la cantidad maxima de pilas que se pueden hacer: "))
+m=int(input("ingrese la cantidad maxima de contenedores que se pueden apilar: "))
 lista=[]
+Palabra = ""
 for i in range(n):
-	fila = []
+	lista.append([])
 	for j in range(m):
-		fila.append(0)
-	lista.append (fila)
+		lista[i].append(0)
 
 for i in range(n):
     for j in range (m):
@@ -15,17 +16,18 @@ for i in range(n):
 menu = int(input("1 para ubicar un contenedor \n2 para ingresar el contenedor \n3 para retirar un contenedor  \n4 para terminar la jornada laboral \nIngrese opción:"))
 while menu !=4:
     if menu == 1:
-        x=0
-        numerocontenedor= int(input("ingrese el numero del contenedor para ubicarlo: "))     
+        numerocontenedor= input("ingrese el numero del contenedor para ubicarlo: ")    
         nombreempresa = input("ingrese el nombre de la empresa:")
-        if lista(n,m)==numerocontenedor:
-            print(n,m)
-            x=1
+        ubicacion=numerocontenedor+"/"+nombreempresa
+        for i in range(n):
+            for j in range(m):
+                if lista[i][j]==ubicacion:
+                    print("el contenedor",lista[i][j],"se encuentra en la pila",[i],"en la posición",[j])           
 
         seguir = input("¿desea continuar?:")
         while seguir== "si":
-            numero = int(input("ingrese el numero del contenedor: "))
-            nombreempresa = input("ingrese el nombre de la empresa propietaria: ")
+            numerocontenedor= int(input("ingrese el numero del contenedor: "))
+            nombreempresa= input("ingrese el nombre de la empresa propietaria: ")
             seguir = input("¿desea continuar?:")
            
         menu = int(input("1 para ubicar un contenedor \n2 para ingresar un contenedor \n3 para retirar un contenedor  \n4 para terminar la jornada \neleccion:"))
@@ -35,9 +37,9 @@ while menu !=4:
         numerocontenedor=input("Ingrese numero del contenedor a añadir:")
         nombreempresa = input("Ingrese nombre de la empresa:")
         ubicacionf= int(input("Ingrese a que fila desea ingresar el contenedor:"))
-        ubicacionc= int(input("Ingrese a que columna desea ingresar el contenedor:")) 
+        ubicacionc= int(input("Ingrese a que columna desea ingresar el contenedor:"))
 
-        lista[ubicacionf][ubicacionc] = numerocontenedor+"/"+nombreempresa
+        lista[ubicacionf][ubicacionc]= numerocontenedor+"/"+nombreempresa
 
         for i in range(n):
             for j in range (m):
@@ -51,7 +53,7 @@ while menu !=4:
             ubicacionf= int(input("Ingrese a que fila desea ingresar el contenedor:"))
             ubicacionc= int(input("Ingrese a que columna desea ingresar el contenedor:"))
 
-            lista[ubicacionf][ubicacionc] = numerocontenedor+"/"+nombreempresa
+            lista[ubicacionf][ubicacionc]= numerocontenedor+"/"+nombreempresa
 
         
             for i in range(n):
@@ -65,9 +67,11 @@ while menu !=4:
     if menu == 3:
         numerocontenedor=int(input("Ingrese numero del contenedor a retirar:"))
         nombreempresa = input("Ingrese nombre de empresa:")
+        ubicacionf=int(input("Ingrese a que fila desea retirar el contenedor:"))
+        ubicacionc=int(input("Ingrese a que columna desea retirar el contenedor:"))
 
-        if lista[ubicacionf-1][ubicacionc] == None:
-            lista[ubicacionf][ubicacionc] = None
+        if lista[ubicacionf-1][ubicacionc] == 0:
+            lista[ubicacionf][ubicacionc] = 0
         else:
             print("hay un contenedor arriba por lo que el contenedor no se puede retirar")
 
@@ -77,6 +81,7 @@ while menu !=4:
                 print("|", lista[i][j], "|", end=" ")
             print()
         seguir = input("¿desea continuar?:")
+
         while seguir == "si":
             numerocontenedor=int(input("Ingrese numero del contenedor a retirar:"))
             empresa = input("Ingrese nombre de empresa:")
